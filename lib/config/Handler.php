@@ -13,6 +13,13 @@ class Handler
   const SECTION_CORE = 'core';
   const SECTION_STORAGE = 'storage';
   
+  const OPT_CLIENT_ID = 'consumer_key';
+  const OPT_CLIENT_SECRET = 'consumer_secret_key';
+  const OPT_CLASS = 'class';
+  const OPT_HOST= 'host';
+  const OPT_USER = 'user';
+  const OPT_PASS = 'pass';
+  
   private $data;
   private $file;
   
@@ -44,7 +51,7 @@ class Handler
    */
   public function get($key, $section = self::SECTION_CORE)
   {
-    if (!isset($this->data[$section]) || !isset($this->data[$section][$key]))
+    if (empty($this->data[$section]) || empty($this->data[$section][$key]))
     {
       return null;
     }
