@@ -1,0 +1,12 @@
+; Rain Drop Widget Config
+;  Make modifications to this file to setup your widget
+
+[core]
+consumer_key = ""
+consumer_secret_key = ""
+
+[storage]
+type = "memcache"
+host = ""
+user = ""
+pass = ""
