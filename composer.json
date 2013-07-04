@@ -1,0 +1,17 @@
+{
+    "name": "phios/rain-drop",
+    "type": "widget",
+    "description": "RainDrop is a Weather Widget that uses the EarthNetworks API by WeatherBug",
+    "keywords": ["weather", "weather widget", "weather forecase", "php weather widget"],
+    "homepage": "https://github.com/jesterb/rain-drop",
+    "authors": [
+        {
+            "name": "Blaine Jester",
+            "email": "blainejester@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
