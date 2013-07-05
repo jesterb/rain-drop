@@ -1,7 +1,7 @@
 <?php
 
 namespace RainDrop\Test\Unit\Config;
-use RainDrop\Test;
+use RainDrop\Test\Mock;
 
 require_once TEST_ROOT . '/mock/config/Handler.php';
 
@@ -16,7 +16,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
       'section2' => array(),
     );
     
-    $handler = new Test\Mock\Config\Handler($data);
+    $handler = new Mock\Config\Handler($data);
     
     $this->assertEquals($data['section1']['test'], 
       $handler->get('test', 'section1'));

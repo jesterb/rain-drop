@@ -39,7 +39,12 @@ class Client
     
     if (empty($token))
     {
-      $token = $this->loadToken($clientId, $clientSecret);
+      $token = $this->loadToken($clientId, $clientSecret, $expire);
+      
+      if (!empty($storage))
+      {
+        $storage->set(self::PARAM_ACCESS_TOKEN, $token, $expire - 3600);
+      }
     }
     
     $this->token = $token;
@@ -81,13 +86,15 @@ class Client
     return $resp;
   }
   
+
   /**
    * 
    * @param string $clientId
    * @param string $clientSecret
+   * @param int &$expire
    * @throws \Exception
    */
-  protected function loadToken($clientId, $clientSecret)
+  protected function loadToken($clientId, $clientSecret, &$expire = null)
   {
     $tokenJson = $this->doExecute(self::TOKEN_URL, array(
       self::PARAM_GRANT => self::OPT_CREDENTIALS,
@@ -104,6 +111,7 @@ class Client
       throw new \Exception("Unable to parse token json response, '$tokenJson'");
     }
     
+    $expire = (int)$tokenArray['OAuth20']['access_token']['expires_in'];
     return $tokenArray['OAuth20']['access_token']['token'];
   }
 
